@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Do you love me?</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: pink;
+        overflow: hidden;
+    }
+
+    /* hearts background */
+    body::before {
+        content: "💖 💕 💗 💘 💞 💓 💝 💖 💕 💗";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        font-size: 30px;
+        opacity: 0.3;
+        animation: move 10s linear infinite;
+    }
+
+    @keyframes move {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-100%); }
+    }
+
+    .container {
+        margin-top: 150px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 18px;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    #noBtn {
+        transition: all 0.3s;
+    }
+
+    #page2 {
+        display: none;
+        margin-top: 100px;
+    }
+
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div id="page1" class="container">
+    <h1>Do you love me?</h1>
+    <button onclick="yesClick()">Yes</button>
+    <button id="noBtn" onclick="noClick()">No</button>
+    <p id="msg"></p>
+</div>
+
+<div id="page2">
+    <img src="https://i.imgur.com/8Km9tLL.png" alt="cute">
+    <h1>aww you still love me after all, I love you baby🥰🥰</h1>
+</div>
+
+<script>
+let noCount = 0;
+
+function noClick() {
+    noCount++;
+    let btn = document.getElementById("noBtn");
+
+    if (noCount < 3) {
+        btn.style.transform = "scale(" + (1 - noCount * 0.3) + ")";
+    } else {
+        btn.style.display = "none";
+        document.getElementById("msg").innerText = "just click yes god damn it";
+    }
+}
+
+function yesClick() {
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "block";
+}
+</script>
+
+</body>
+</html>
